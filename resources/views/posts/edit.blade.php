@@ -8,15 +8,17 @@
      <link rel="stylesheet" href="/css/app.css">
  </head>
  <body>
-     <form action="{{route('posts.store')}}" method="post">
+     <h1>Edit {{$post->title}}</h1>
+     <form action="{{route('posts.update', ['post'=> $post->id])}}" method="post">
          @csrf
+         @method('PUT')
          <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" name="title" id="title" class="form-control" required>
+              <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
          </div>
          <div class="form-group">
               <label for="body">Body</label>
-              <textarea name="body" id="body" class="form-control" rows="3" required></textarea>
+              <textarea name="body" id="body" class="form-control" rows="3">{{$post->body}}</textarea>
          </div>
          <button type="submit" class="btn btn-primary">Submit</button>
      </form>
